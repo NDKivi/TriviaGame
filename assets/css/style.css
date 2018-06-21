@@ -3,8 +3,7 @@
     blue: #0055A4
     red: #EF4135
     */
-
-    
+ 
 body {
     font-family: 'Quattrocento Sans', sans-serif;
     background: white;
@@ -51,10 +50,12 @@ th {
     text-align: left;
     padding: 0.5rem;
 }
+
 td {
     text-align: right;
     padding: 0.5rem;
 }
+
 tr:nth-child(even) {
     background-color: #fde9e8;
 }
@@ -86,6 +87,7 @@ tr:nth-child(odd) {
     padding: 0.5rem;
     cursor: pointer;
 }
+
 .answer-item:hover {
     background: #F7F7F7;
 }
@@ -95,11 +97,37 @@ tr:nth-child(odd) {
 }
 
 @media only screen and (max-width: 768px) {
+
     main {
         width: 100%;
+        border-radius: 0;
     }
 }
 
 @media only screen and (max-width: 640px) {
+
+    table {
+        font-size: 1rem;
+    }
+
+    button {
+        font-size: 0.9rem;
+    }
+
+    h5 {
+        font-size: 1.1rem;
+    }
+
+    .answer-item {
+        font-size: 1rem;
+    }
+
+    #prompt {
+        font-size: 1.2rem;
+    }
+
+    #title {
+        font-size: 1.8rem;
+    }
 
 }

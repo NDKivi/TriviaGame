@@ -125,7 +125,7 @@ function loadQuestions() {
     questions.push(new Question("Who is the current president of France?", 1, "François Hollande", "Immanuel Macron", "Nicholas Sarkosy", "Angela Merkel", "Jacques Cousteau"));
     questions.push(new Question("The latest French republic was established in 1958.  In the sequence of French republics, which is the current one?", 3, "Second", "Third", "Fourth", "Fifth", "Tenth"));
     questions.push(new Question("Which currency is in circulation in France?", 0, "The Euro", "The Yen", "The Rupee", "The Franc", "The Dollar", "The Frenchie"));
-    questions.push(new Question("Which is not a current major political party in France?", 4, "The Republican Party (le parti républicain)", "The Socialist Party (le parti socialiste)", "The National Front (le front national)", "The Republic on the Move (la république en marche", "The Democratic Party (le parti démocrate)"));
+    questions.push(new Question("Which is not a current major political party in France?", 4, "The Republican Party (le parti républicain)", "The Socialist Party (le parti socialiste)", "The National Front (le front national)", "The Republic on the Move (la république en marche)", "The Democratic Party (le parti démocrate)"));
 }
 
 /* Function is run when user fails to respond to question in time */
