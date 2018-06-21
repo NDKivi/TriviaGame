@@ -9,8 +9,8 @@ let gameState;
 let questionTimeout;
 
 
-const questionTime = 10000;
-const answerTime = 4000;
+const questionTime = 200000;
+const answerTime = 3000;
 const gameStateEnum = {
     start: 0,
     question: 1,
@@ -118,25 +118,14 @@ function Question(prompt, correctAnswerIndex, ...answers) {
         $(newDiv).append($(list));
         return newDiv;
     }
-    // this.getAnswerHTML = function(guess) {
-    //     let newDiv = this.getHTML();
-    //     let correctAnswerIndexID = "#" + this.correctAnswerIndex;
-    //     $(correctAnswerIndexID).css("color","red");
-    //     $()
-    //     //80ced6
-    //     if (guess === this.correctAnswerIndex) {
-
-    //     } else if (typeof guess === "number") {
-
-    //     }
-    // }
 }
 
 /* Data for questions */
 function loadQuestions() {
-    questions.push(new Question("Who was the first prez of the USA?", 0, "G Wash", "Mill Fil", "T Jeff", "Roosevelt"));
-    questions.push(new Question("To be or not to be?", 1, "Not to be", "To be"));
-    questions.push(new Question("First planet from the sun:", 2, "Venus", "Hermes", "Mercury"));
+    questions.push(new Question("Who is the current president of France?", 1, "François Hollande", "Immanuel Macron", "Nicholas Sarkosy", "Angela Merkel", "Jacques Cousteau"));
+    questions.push(new Question("The latest French republic was established in 1958.  In the sequence of French republics, which is the current one?", 3, "Second", "Third", "Fourth", "Fifth", "Tenth"));
+    questions.push(new Question("Which currency is in circulation in France?", 0, "The Euro", "The Yen", "The Rupee", "The Franc", "The Dollar", "The Frenchie"));
+    questions.push(new Question("Which is not a current major political party in France?", 4, "The Republican Party (le parti républicain)", "The Socialist Party (le parti socialiste)", "The National Front (le front national)", "The Republic on the Move (la république en marche", "The Democratic Party (le parti démocrate)"));
 }
 
 /* Function is run when user fails to respond to question in time */
@@ -174,14 +163,18 @@ function displayStart() {
 function displayAnswer(isRight, selectedElement) {
     let correctAnswerIndexID = "#" + questions[currentQuestionIndex].correctAnswerIndex;
     console.log(correctAnswerIndexID);
-    $(correctAnswerIndexID).css("color", "red");
-    $(selectedElement).css("background-color", "yellow");
+    $(".answer-item").css("cursor","text");
+    $(".answer-item").hover(function () { 
+        $(this).css("background","none")
+    });
+    $(correctAnswerIndexID).css("color", "#EF4135");
+    $(selectedElement).css("background-color", "white");
     if (typeof isRight === "undefined") {
-        $("main").prepend($("<h5>You were too slow...</h5>"));
+        $("main").append($("<h5 class='red'>You failed to answer in time.  The correct answer is in red.</h5>"));
     } else if (isRight) {
-        $("main").prepend($("<h5>You are correct!!!!</h5>"));        
+        $("main").append($("<h5>Correct!</h5>"));        
     } else {
-        $("main").prepend($("<h5>You are wrong!!!!!</h5>"));
+        $("main").append($("<h5 class='red'>Incorrect!  The correct answer is in red.</h5>"));
     }
 }
 
