@@ -6,7 +6,11 @@
  
 body {
     font-family: 'Quattrocento Sans', sans-serif;
-    background: white;
+    background-color: white;
+    background-image: url("../images/eiffel_large_light.png"); 
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
     color: #0055A4;
 }
 
@@ -18,7 +22,7 @@ main, button, li {
 main {
     width: 768px;
     min-height: 355px;
-    background: #EFEFEF;
+    background: #F8F8F8;
     margin: auto;
 }
 
