@@ -10,11 +10,11 @@ let questionTimeout;
 let questionInterval;
 let intervalCounter;
 
-const questionTime = 100000;
-const intervalLength = 500;
+const questionTime = 20000;
+const intervalLength = 50;
 
 // const intervalToUpdate = questionTime / ;
-const answerTime = 3000;
+const answerTime = 500;
 const gameStateEnum = {
     start: 0,
     question: 1,
@@ -135,10 +135,16 @@ function Question(prompt, correctAnswerIndex, ...answers) {
 
 /* Data for questions */
 function loadQuestions() {
-    questions.push(new Question("Who is the current president of France?", 1, "François Hollande", "Immanuel Macron", "Nicholas Sarkosy", "Angela Merkel", "Jacques Cousteau"));
-    questions.push(new Question("The latest French republic was established in 1958.  In the sequence of French republics, which is the current one?", 3, "Second", "Third", "Fourth", "Fifth", "Tenth"));
+    questions.push(new Question("What is the capital city of France?", 3, "Versailles", "Marsaille", "Bordeaux", "Paris"));
+    questions.push(new Question("What is the name of the French national anthem?", 2, "La Vie en Rose", "The Star Spangled Banner", "The Marsaillaise", "God Save the Queen"));
+    questions.push(new Question("Who is the current president of France?", 1, "François Hollande", "Emmanuel Macron", "Nicholas Sarkosy", "Angela Merkel", "Jacques Cousteau", "Donald Trump"));
+    questions.push(new Question("Which color is NOT present in France's flag?", 2, "Red", "White", "Green", "Blue"));
+    questions.push(new Question("The current French republic was established in 1958.  In the sequence of republics in this history of France, which is the current one?", 3, "Second", "Third", "Fourth", "Fifth", "Tenth"));
     questions.push(new Question("Which currency is in circulation in France?", 0, "The Euro", "The Yen", "The Rupee", "The Franc", "The Dollar", "The Frenchie"));
-    questions.push(new Question("Which is not a current major political party in France?", 4, "The Republican Party (le parti républicain)", "The Socialist Party (le parti socialiste)", "The National Front (le front national)", "The Republic on the Move (la république en marche)", "The Democratic Party (le parti démocrate)"));
+    questions.push(new Question("Which is NOT a current major political party in France?", 4, "The Republican Party (le parti républicain)", "The Socialist Party (le parti socialiste)", "The National Front (le front national)", "The Republic on the Move (la république en marche)", "The Democratic Party (le parti démocrate)"));
+    questions.push(new Question("France has a nickname that is a geometric shape.  What is it?  Hint: Look at a map.", 0, "Hexagon", "Triangle", "Square"));
+    questions.push(new Question("Which philospher is NOT French?", 0, "Georg Wilhelm Friedrich Hegel", "René Descartes", "Jean Paul Sartre", "Jean Jacques Rousseau"));
+    questions.push(new Question("True/Fale: UNESCO put French cuisine on its 'world intangible heritage' list of cultural practices to protect.", 0, "True", "False"));
 }
 
 /* Function is run when user fails to respond to question in time */
@@ -195,10 +201,13 @@ function displayAnswer(isRight, selectedElement) {
 function displayGameover() {
     $("main").empty();
     $("main").append($("<h5>Game over.  Here are your results.</h5>"));
+    if (numberRight > (questions.length * 0.8)) {
+        $("main").append($("<h5>Vous connaissez la France !</h5>"));
+    }
     let newTable = $(`<table>
                         <tr><th>Correct</th><td>${numberRight}</td></tr>
                         <tr><th>Wrong</th><td>${numberWrong}</td></tr>
-                        <tr><th>Too Slow</th><td>${numberNoResponse}</td></tr>
+                        <tr><th>Out of Time</th><td>${numberNoResponse}</td></tr>
                     </table>`);
     $("main").append(newTable);
     $("main").append($("<button id='restart-button'>Play Again</button>"));

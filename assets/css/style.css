@@ -61,11 +61,11 @@ td {
     padding: 0.5rem;
 }
 
-tr:nth-child(even) {
+tr:nth-child(odd) {
     background-color: #fde9e8;
 }
 
-tr:nth-child(odd) {
+tr:nth-child(even) {
     background-color: #F7F7F7
 }
 
@@ -100,7 +100,7 @@ progress {
 }
 
 .answer-item:hover {
-    background: #F7F7F7;
+    background: white;
 }
 
 .red {
