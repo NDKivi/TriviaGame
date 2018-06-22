@@ -7,9 +7,13 @@ let numberNoResponse;
 let currentQuestionIndex;
 let gameState;
 let questionTimeout;
+let questionInterval;
+let intervalCounter;
 
+const questionTime = 100000;
+const intervalLength = 500;
 
-const questionTime = 200000;
+// const intervalToUpdate = questionTime / ;
 const answerTime = 3000;
 const gameStateEnum = {
     start: 0,
@@ -43,6 +47,7 @@ $(document).ready(function () {
 
     $("body").on("click", ".answer-item", function () {
         if (gameState === gameStateEnum.question) {
+            clearInterval(questionInterval);
             clearTimeout(questionTimeout);
             gameState = gameStateEnum.answer;
             let selectedIndex = parseInt($(this).attr("id"));
@@ -73,7 +78,15 @@ function startGame() {
 
 function nextQuestion() {
     $("main").empty();
+    let progressBar = $(`<progress id='time-left' value='${questionTime}' max='${questionTime}'></progress>"`);
+    $("main").append(progressBar);
     $("main").append(questions[currentQuestionIndex].getHTML());
+    intervalCounter = 0;
+    questionInterval = setInterval(function() {
+        intervalCounter++;
+        let progressBarValue = questionTime - intervalCounter * intervalLength;
+        $("#time-left").attr("value",progressBarValue);
+    }, intervalLength);
     questionTimeout = setTimeout(questionTimeExpired, questionTime);
 }
 // Constructor for questions
@@ -132,6 +145,7 @@ function loadQuestions() {
 function questionTimeExpired() {
     gameState = gameStateEnum.answer;
     clearTimeout(questionTimeout);
+    clearInterval(questionInterval);
     numberNoResponse++;
     displayAnswer();
     setTimeout(answerTimeExpired, answerTime);

@@ -32,6 +32,7 @@ button {
 
 p {
     padding: 1rem 1rem 1rem 1rem;
+    font-size: 1.5rem;
 }
 
 h5 {
@@ -62,6 +63,12 @@ tr:nth-child(even) {
 
 tr:nth-child(odd) {
     background-color: #F7F7F7
+}
+
+progress {
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 1rem;
 }
 
 #title {
@@ -116,6 +123,10 @@ tr:nth-child(odd) {
 
     h5 {
         font-size: 1.1rem;
+    }
+
+    p {
+        font-size: 1.2rem;
     }
 
     .answer-item {
