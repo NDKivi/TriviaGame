@@ -10,11 +10,9 @@ let questionTimeout;
 let questionInterval;
 let intervalCounter;
 
-const questionTime = 20000;
+const questionTime = 18000;
 const intervalLength = 50;
-
-// const intervalToUpdate = questionTime / ;
-const answerTime = 500;
+const answerTime = 3000;
 const gameStateEnum = {
     start: 0,
     question: 1,
@@ -29,7 +27,6 @@ const questions = [];
 $(document).ready(function () {
     // Start game
     startGame();
-
 
     $("body").on("click", "#start-button", function () {
         gameState = gameStateEnum.question;
@@ -89,6 +86,7 @@ function nextQuestion() {
     }, intervalLength);
     questionTimeout = setTimeout(questionTimeExpired, questionTime);
 }
+
 // Constructor for questions
 function Question(prompt, correctAnswerIndex, ...answers) {
 
@@ -135,11 +133,11 @@ function Question(prompt, correctAnswerIndex, ...answers) {
 
 /* Data for questions */
 function loadQuestions() {
-    questions.push(new Question("What is the capital city of France?", 3, "Versailles", "Marsaille", "Bordeaux", "Paris"));
+    questions.push(new Question("What is the capital city of France?", 3, "Versailles", "Marseille", "Bordeaux", "Paris"));
     questions.push(new Question("What is the name of the French national anthem?", 2, "La Vie en Rose", "The Star Spangled Banner", "The Marsaillaise", "God Save the Queen"));
-    questions.push(new Question("Who is the current president of France?", 1, "François Hollande", "Emmanuel Macron", "Nicholas Sarkosy", "Angela Merkel", "Jacques Cousteau", "Donald Trump"));
+    questions.push(new Question("Who is the current president of France?", 1, "François Hollande", "Emmanuel Macron", "Nicholas Sarkozy", "Angela Merkel", "Jacques Cousteau", "Donald Trump"));
     questions.push(new Question("Which color is NOT present in France's flag?", 2, "Red", "White", "Green", "Blue"));
-    questions.push(new Question("The current French republic was established in 1958.  In the sequence of republics in this history of France, which is the current one?", 3, "Second", "Third", "Fourth", "Fifth", "Tenth"));
+    questions.push(new Question("The current French republic was established in 1958.  In the sequence of republics in the history of France, which is the current one?", 3, "Second", "Third", "Fourth", "Fifth", "Tenth"));
     questions.push(new Question("Which currency is in circulation in France?", 0, "The Euro", "The Yen", "The Rupee", "The Franc", "The Dollar", "The Frenchie"));
     questions.push(new Question("Which is NOT a current major political party in France?", 4, "The Republican Party (le parti républicain)", "The Socialist Party (le parti socialiste)", "The National Front (le front national)", "The Republic on the Move (la république en marche)", "The Democratic Party (le parti démocrate)"));
     questions.push(new Question("France has a nickname that is a geometric shape.  What is it?  Hint: Look at a map.", 0, "Hexagon", "Triangle", "Square"));
