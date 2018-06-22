@@ -135,7 +135,7 @@ function Question(prompt, correctAnswerIndex, ...answers) {
 function loadQuestions() {
     questions.push(new Question("What is the capital city of France?", 3, "Versailles", "Marseille", "Bordeaux", "Paris"));
     questions.push(new Question("What is the name of the French national anthem?", 2, "La Vie en Rose", "The Star Spangled Banner", "The Marsaillaise", "God Save the Queen"));
-    questions.push(new Question("Who is the current president of France?", 1, "François Hollande", "Emmanuel Macron", "Nicholas Sarkozy", "Angela Merkel", "Jacques Cousteau", "Donald Trump"));
+    questions.push(new Question("Who is the current president of France?", 1, "François Hollande", "Emmanuel Macron", "Nicolas Sarkozy", "Angela Merkel", "Jacques Cousteau", "Donald Trump"));
     questions.push(new Question("Which color is NOT present in France's flag?", 2, "Red", "White", "Green", "Blue"));
     questions.push(new Question("The current French republic was established in 1958.  In the sequence of republics in the history of France, which is the current one?", 3, "Second", "Third", "Fourth", "Fifth", "Tenth"));
     questions.push(new Question("Which currency is in circulation in France?", 0, "The Euro", "The Yen", "The Rupee", "The Franc", "The Dollar", "The Frenchie"));
