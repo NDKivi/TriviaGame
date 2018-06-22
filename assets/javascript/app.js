@@ -172,7 +172,7 @@ function answerTimeExpired() {
 //=============================================================================
 function displayStart() {
     // paragraph explaining game
-    $("main").append($("<p>You will see questions one by one.  Answer them before time runs out.</p>"));
+    $("main").append($(`<p>Welcome!  Press the button below to start a ${questions.length} question quiz on France.  You will have ${(questionTime / 1000).toFixed()} seconds to answer each question.</p>`));
 
     // button with id of start-button
     $("main").append($("<button id='start-button'>Start Game</button>"));
@@ -185,13 +185,15 @@ function displayAnswer(isRight, selectedElement) {
     $(".answer-item").hover(function () { 
         $(this).css("background","none")
     });
-    $(correctAnswerIndexID).css("color", "#EF4135");
-    $(selectedElement).css("background-color", "white");
+    $(selectedElement).css("border", "1px #0055A4 solid");
     if (typeof isRight === "undefined") {
+        $(correctAnswerIndexID).css("color", "#EF4135");
         $("main").append($("<h5 class='red'>You failed to answer in time.  The correct answer is in red.</h5>"));
     } else if (isRight) {
+        $(correctAnswerIndexID).css("font-weight", "bolder");
         $("main").append($("<h5>Correct!</h5>"));        
     } else {
+        $(correctAnswerIndexID).css("color", "#EF4135");
         $("main").append($("<h5 class='red'>Incorrect!  The correct answer is in red.</h5>"));
     }
 }
@@ -200,7 +202,7 @@ function displayGameover() {
     $("main").empty();
     $("main").append($("<h5>Game over.  Here are your results.</h5>"));
     if (numberRight > (questions.length * 0.8)) {
-        $("main").append($("<h5>Vous connaissez la France !</h5>"));
+        $("main").append($("<h5>Vous connaissez bien la France !</h5>"));
     }
     let newTable = $(`<table>
                         <tr><th>Correct</th><td>${numberRight}</td></tr>

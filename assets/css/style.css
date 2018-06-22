@@ -31,6 +31,7 @@ button {
     font-size: 1rem;
     background-color: #0055A4;
     color: #F7F7F7;
+    cursor: pointer;
 }
 
 p {
@@ -61,7 +62,7 @@ td {
 }
 
 tr:nth-child(odd) {
-    background-color: #fde9e8;
+    background-color: #e6f3ff;
 }
 
 tr:nth-child(even) {
